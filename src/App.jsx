@@ -58,8 +58,29 @@ function App() {
     setGameStage(stages[1].name);
   };
 
-  const verifyLatter = () => {
-    setGameStage(stages[2].name);
+  const verifyLatter = (letter) => {
+    const normalizedLetter = letter.toLowerCase();
+    // check if letter has alredady been utilized
+    if (
+      guessedLetters.includes(normalizedLetter) ||
+      wrongLetters.includes(normalizedLetter)
+    ) {
+      return;
+    }
+    //push guessed letter os remove a guess
+    if (letter.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter,
+      ]);
+    }
+    console.log(letter);
+    console.log(wrongLetters);
   };
 
   const retry = () => {
