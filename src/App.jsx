@@ -46,14 +46,15 @@ function App() {
     const { word, category } = pickWordAndCategory();
     // create an array of latters
     let wordLetters = word.split("");
-    //wordLetters = wordLetters.map((1) => 1.toLowerCase());
+    wordLetters = wordLetters.map((letter) => letter.toLowerCase());
+
     console.log(word, category);
     console.log(wordLetters);
 
     //fill states
     setPickedWord(word);
     setPickedCategory(category);
-    setLatters(latters);
+    setLatters(wordLetters);
     setGameStage(stages[1].name);
   };
 
